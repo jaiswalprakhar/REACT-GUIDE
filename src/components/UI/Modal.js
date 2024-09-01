@@ -2,15 +2,16 @@ import { Fragment } from 'react';
 import ReactDom from 'react-dom';
 import { Backdrop } from './Loader';
 
-const Modal = () => {
+const Modal = ({ onClose, children }) => {
     return (
         <Fragment>
         {
             ReactDom.createPortal(
                 <Fragment>
-                    <Backdrop/>
+                    <Backdrop onClose = { onClose }/>
                     <div className="modal">
-                        Modal Content!
+                        <button type = "close" onClick = {onClose}> X </button>
+                        <div className = "content">{ children }</div>
                     </div>
                 </Fragment>
                 ,
